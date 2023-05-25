@@ -150,7 +150,7 @@ jobs:
     name: Notify on Slack
     runs-on: ubuntu-latest
     needs: run_tests
-    if: ${{ always() }}
+    if: ${{ false }}
 
     steps:
       - name: Set Slack message
