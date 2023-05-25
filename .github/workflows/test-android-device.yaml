@@ -41,6 +41,9 @@ jobs:
       - name: Set up Cloud SDK
         uses: google-github-actions/setup-gcloud@v1
 
+      - name: Install Cloud SDK Beta components
+        run: gcloud components install beta
+
       - name: Gradle cache
         uses: gradle/gradle-build-action@v2
         with:
