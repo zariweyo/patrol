@@ -7,6 +7,6 @@ cd "$(dirname "$0")"
 RESULTS_DIR_NAME="$(date +"%Y-%m-%d_%H:%M:%S")"
 echo "RESULTS_DIR_NAME=$RESULTS_DIR_NAME" >> "$GITHUB_ENV"
 
-flank firebase test android doctor
+java -jar ./flank.jar firebase test android doctor
 
 exec gcloud firebase test android run flank.yml:gcloud --results-dir="$RESULTS_DIR_NAME"

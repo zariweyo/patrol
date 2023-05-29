@@ -44,7 +44,7 @@ jobs:
       - name: Set up flank
         run: |
           wget --quiet https://github.com/Flank/flank/releases/download/v23.04.0/flank.jar -O ./flank.jar
-          java -jar ./flank.jar android run
+          # java -jar ./flank.jar
 
       - name: Gradle cache
         uses: gradle/gradle-build-action@v2
