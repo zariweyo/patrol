@@ -5,7 +5,7 @@ gcloud:
   test: build/app/outputs/apk/androidTest/debug/app-debug-androidTest.apk
   device:
     - model: oriole
-      version: 33
+      version: "33"
       locale: en
       orientation: portrait
   timeout: 10m
