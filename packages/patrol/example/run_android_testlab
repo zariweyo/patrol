@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 set -euo pipefail
-cd "$(dirname "$0")"
 
 # This script assumes that APKs are already built.
 
@@ -9,4 +8,4 @@ echo "RESULTS_DIR_NAME=$RESULTS_DIR_NAME" >> "$GITHUB_ENV"
 
 java -jar ./flank.jar firebase test android doctor
 
-exec gcloud firebase test android run flank.yml:gcloud --results-dir="$RESULTS_DIR_NAME"
+java -jar ./flank.jar firebase test android run --results-dir="$RESULTS_DIR_NAME"
