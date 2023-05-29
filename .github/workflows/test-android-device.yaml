@@ -45,7 +45,6 @@ jobs:
         run: |
           wget --quiet https://github.com/Flank/flank/releases/download/v23.04.0/flank.jar -O ./flank.jar
           java -jar ./flank.jar android run
-          flank firebase test android doctor
 
       - name: Gradle cache
         uses: gradle/gradle-build-action@v2
