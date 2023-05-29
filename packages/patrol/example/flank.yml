@@ -1,4 +1,5 @@
 gcloud:
+  project: patrol-example-app
   type: instrumentation
   # num-uniform-shards: 3
   app: build/app/outputs/apk/debug/app-debug.apk
