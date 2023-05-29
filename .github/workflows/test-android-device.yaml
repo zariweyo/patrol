@@ -27,6 +27,12 @@ jobs:
       - name: Clone repository
         uses: actions/checkout@v3
 
+      - name: Set up flank
+        run: |
+          wget --quiet https://github.com/Flank/flank/releases/download/v23.04.0/flank.jar -O ./flank.jar
+          java -jar ./flank.jar android run
+          flank firebase test android doctor
+
       - name: Set up Java
         uses: actions/setup-java@v3
         with:
@@ -40,9 +46,6 @@ jobs:
 
       - name: Set up Cloud SDK
         uses: google-github-actions/setup-gcloud@v1
-
-      - name: Install Cloud SDK Beta components
-        run: gcloud components install beta
 
       - name: Gradle cache
         uses: gradle/gradle-build-action@v2
@@ -85,14 +88,14 @@ jobs:
         if: success() || failure()
         run: |
           mkdir "test_outputs"
-          gsutil -m cp -r "gs://patrol_runs/${{ env.RESULTS_DIR_NAME }}/oriole-33-en-portrait/*" "test_outputs"
+          gsutil rsync -x '*.apk' "test_outputs" "gs://patrol_runs/${{ env.RESULTS_DIR_NAME }}/*"
 
       - name: Publish test report to summary
         uses: mikepenz/action-junit-report@v3
         if: success() || failure()
         with:
           check_name: Patrol tests
-          report_paths: ${{ github.workspace }}/packages/patrol/example/test_outputs/test_result_1.xml
+          report_paths: ${{ github.workspace }}/packages/patrol/example/test_outputs/oriole-33-en-portrait-test_results_merged.xml
           detailed_summary: true
           include_passed: true
 
@@ -101,7 +104,7 @@ jobs:
         uses: dorny/test-reporter@v1
         with:
           name: Patrol Tests
-          path: ${{ github.workspace }}/packages/patrol/example/test_outputs/test_result_1.xml
+          path: ${{ github.workspace }}/packages/patrol/example/test_outputs/oriole-33-en-portrait-test_results_merged.xml
           reporter: java-junit
           fail-on-error: false
 
@@ -110,7 +113,7 @@ jobs:
         if: success() || failure()
         with:
           name: XML test report
-          path: ${{ github.workspace }}/packages/patrol/example/test_outputs/test_result_1.xml
+          path: ${{ github.workspace }}/packages/patrol/example/test_outputs/oriole-33-en-portrait-test_results_merged.xml
 
       - name:  Upload captured video to artifacts
         uses: actions/upload-artifact@v3
