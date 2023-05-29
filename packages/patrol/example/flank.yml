@@ -18,7 +18,7 @@ gcloud:
 
 flank:
   max-test-shards: 3
-  smart-flank-gcs-path: gs://patrol_runs/2023-05-18_15:14:17/oriole-33-en-portrait/test_result_1.xml
+  smart-flank-gcs-path: gs://patrol_runs/2023-05-26_09:54:54/oriole-33-en-portrait-test_results_merged.xml
   use-average-test-time-for-new-tests: true
   local-result-dir: flank_local_results
   full-junit-result: true
