@@ -14,8 +14,8 @@ gcloud:
   results-dir: "$NOT_RESULTS_DIR_NAME"
   use-orchestrator: true
   environment-variables:
-    - clearPackageData: true
-    - packageName: pl.leancode.patrol.example
+    clearPackageData: true
+    packageName: pl.leancode.patrol.example
 
 flank:
   max-test-shards: 3
