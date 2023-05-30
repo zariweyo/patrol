@@ -42,6 +42,7 @@ jobs:
         uses: google-github-actions/setup-gcloud@v1
 
       - name: Set up flank
+        if: false
         run: |
           wget --quiet https://github.com/Flank/flank/releases/download/v23.04.0/flank.jar -O ./flank.jar
 
@@ -77,7 +78,18 @@ jobs:
             --exclude integration_test/webview_login_test.dart \
             --exclude integration_test/webview_stackoverflow_test.dart
 
+      - name: flank run
+        uses: Flank/flank@master
+        with:
+          # Service account file content from secrets
+          service_account: ${{ env.GOOGLE_GHA_CREDS_PATH }} 
+          # Run Android tests
+          platform: android
+          # Path to configuration file from local repo
+          flank_configuration_file: flank.yml
+
       - name: Upload APKs to Firebase Test Lab and wait for tests to finish
+        if: false
         id: tests_step
         run: ./run_android_testlab
 
