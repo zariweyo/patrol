@@ -8,6 +8,10 @@ gcloud:
       version: "33"
       locale: en
       orientation: portrait
+    - model: NexusLowRes
+      version: "28"
+      locale: en
+      orientation: portrait
   timeout: 10m
   record-video: true
   results-bucket: patrol_runs
@@ -19,8 +23,8 @@ gcloud:
 flank:
   max-test-shards: 4
   default-test-time: 5
-  shard-time: 60
-  smart-flank-gcs-path: gs://patrol_runs/2023-05-30_18-50-35.725321_dMGY/JUnitReport.xml
+  shard-time: 10
+  smart-flank-gcs-path: gs://patrol_runs/2023-05-30_18-50-35.725321_dMGY/matrix_0/oriole-33-en-portrait/test_result_1.xml
   use-average-test-time-for-new-tests: true
   local-result-dir: flank_local_results
   full-junit-result: false
