@@ -86,7 +86,7 @@ jobs:
           # Run Android tests
           platform: android
           # Path to configuration file from local repo
-          flank_configuration_file: flank.yml
+          flank_configuration_file: ${{ github.workspace }}/packages/patrol/example/flank.yml
 
       - name: Upload APKs to Firebase Test Lab and wait for tests to finish
         if: false
