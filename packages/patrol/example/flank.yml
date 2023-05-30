@@ -1,8 +1,8 @@
 gcloud:
   type: instrumentation
   # num-uniform-shards: 3
-  app: build/app/outputs/apk/debug/app-debug.apk
-  test: build/app/outputs/apk/androidTest/debug/app-debug-androidTest.apk
+  app:  /home/runner/work/patrol/patrol/packages/patrol/example/build/app/outputs/apk/debug/app-debug.apk
+  test: /home/runner/work/patrol/patrol/packages/patrol/example/build/app/outputs/apk/androidTest/debug/app-debug-androidTest.apk
   device:
     - model: oriole
       version: "33"
