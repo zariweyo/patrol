@@ -1,8 +1,8 @@
 gcloud:
   type: instrumentation
   # num-uniform-shards: 3
-  app: /home/runner/work/patrol/patrol/packages/patrol/example/build/app/outputs/apk/debug/app-debug.apk
-  test: /home/runner/work/patrol/patrol/packages/patrol/example/build/app/outputs/apk/androidTest/debug/app-debug-androidTest.apk
+  app: build/app/outputs/apk/debug/app-debug.apk
+  test: build/app/outputs/apk/androidTest/debug/app-debug-androidTest.apk
   device:
     - model: oriole
       version: "33"
@@ -17,9 +17,10 @@ gcloud:
     packageName: pl.leancode.patrol.example
 
 flank:
-  max-test-shards: 3
-  default-test-time: 10
-  mart-flank-gcs-path: gs://patrol_runs/2023-05-26_09:54:54/oriole-33-en-portrait-test_results_merged.xml
+  max-test-shards: 4
+  default-test-time: 5
+  shard-time: 60
+  smart-flank-gcs-path: gs://patrol_runs/2023-05-30_18-50-35.725321_dMGY/JUnitReport.xml
   use-average-test-time-for-new-tests: true
   local-result-dir: flank_local_results
   full-junit-result: true
