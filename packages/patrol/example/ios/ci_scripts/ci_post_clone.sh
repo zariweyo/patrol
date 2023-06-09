@@ -1,7 +1,8 @@
-#!/bin/sh
+#!/usr/bin/env bash
+set -euo pipefail
 
 # The default execution directory of this script is the ci_scripts directory.
-cd "$CI_WORKSPACE" || exit # change working directory to the root of your cloned repo.
+cd "$CI_WORKSPACE/packages/patrol/example" || exit # change working directory to the root of your cloned repo.
 
 # Install Flutter using git.
 git clone https://github.com/flutter/flutter.git --depth 1 -b stable "$HOME"/flutter
