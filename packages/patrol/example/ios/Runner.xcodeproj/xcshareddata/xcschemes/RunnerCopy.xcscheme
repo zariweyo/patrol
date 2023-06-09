@@ -26,16 +26,7 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "YES">
-      <PreActions>
-         <ExecutionAction
-            ActionType = "Xcode.IDEStandardExecutionActionsCore.ExecutionActionType.ShellScriptAction">
-            <ActionContent
-               title = "Run Script"
-               scriptText = "# Type a script or drag a script file from your workspace to insert its path.&#10;cd &quot;$CI_WORKSPACE&quot; || exit&#10;ls -all&#10;&#10;dart pub global activate \&#10;    --source git https://github.com/leancodepl/patrol.git \&#10;    --git-path packages/patrol_cli \&#10;    --git-ref patrol_cli-v2.0.0&#10;    &#10;patrol build ios --target integration_test/example_test.dart&#10;">
-            </ActionContent>
-         </ExecutionAction>
-      </PreActions>
+      shouldUseLaunchSchemeArgsEnv = "NO">
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
@@ -45,6 +36,13 @@
             ReferencedContainer = "container:Runner.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
+      <EnvironmentVariables>
+         <EnvironmentVariable
+            key = "CI_TEST_PRODUCTS_PATH"
+            value = "$CI_WORKSPACE/packages/patrol/example/build/ios_integ/Build/Products"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+      </EnvironmentVariables>
       <Testables>
          <TestableReference
             skipped = "NO">
