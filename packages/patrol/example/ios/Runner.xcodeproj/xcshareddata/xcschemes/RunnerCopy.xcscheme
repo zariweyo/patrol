@@ -38,6 +38,11 @@
       </MacroExpansion>
       <EnvironmentVariables>
          <EnvironmentVariable
+            key = "PATH"
+            value = "$PATH:$HOME/flutter/bin"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+         <EnvironmentVariable
             key = "CI_TEST_PRODUCTS_PATH"
             value = "$CI_WORKSPACE/packages/patrol/example/build/ios_integ/Build/Products"
             isEnabled = "YES">
