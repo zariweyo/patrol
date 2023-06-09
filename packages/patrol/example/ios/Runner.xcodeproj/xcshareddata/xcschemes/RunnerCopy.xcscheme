@@ -36,16 +36,22 @@
             ReferencedContainer = "container:Runner.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
+      <CommandLineArguments>
+         <CommandLineArgument
+            argument = "-xctestrun $CI_WORKSPACE/packages/patrol/example/build/ios_integ/Build/Products"
+            isEnabled = "YES">
+         </CommandLineArgument>
+      </CommandLineArguments>
       <EnvironmentVariables>
          <EnvironmentVariable
             key = "PATH"
             value = "$PATH:$HOME/flutter/bin"
-            isEnabled = "YES">
+            isEnabled = "NO">
          </EnvironmentVariable>
          <EnvironmentVariable
             key = "CI_TEST_PRODUCTS_PATH"
             value = "$CI_WORKSPACE/packages/patrol/example/build/ios_integ/Build/Products"
-            isEnabled = "YES">
+            isEnabled = "NO">
          </EnvironmentVariable>
       </EnvironmentVariables>
       <Testables>
