@@ -12,4 +12,4 @@ dart pub global activate \
 
 export PATH="$PATH":"$HOME/.pub-cache/bin"
     
-patrol build ios --target integration_test/example_test.dart
+patrol build ios --simulator --target integration_test/example_test.dart
