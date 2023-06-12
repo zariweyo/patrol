@@ -13,3 +13,6 @@ dart pub global activate \
 export PATH="$PATH":"$HOME/.pub-cache/bin"
     
 patrol build ios --simulator --target integration_test/example_test.dart
+mv build/ios_integ/Build/Products/*.xctestrun '/Volumes/workspace/TestProducts/RunnerCopy_iphonesimulator16.4-x86_64.xctestrun'
+
+
