@@ -120,7 +120,14 @@ jobs:
 
           xcresultparser -o junit "${{ env.XCRESULT_PATH }}" > ~/results.xml
 
-          xmlstarlet sel -t -v "//testcase[failure]/@name" ~/results.xml | sed 's/runDartTest//g' | tr -d '[]'; echo
+          FAILED_TESTS=$(xmlstarlet sel -t -v "//testcase[failure]/@name" ~/results.xml | sed 's/runDartTest//g' | tr -d '[]')
+          echo $FAILED_TESTS
+
+          FAILED_TESTS=$(printf ' • %s\n' $FAILED_TESTS)
+          echo "FAILED_TESTS<<EOF" >> $GITHUB_OUTPUT
+          echo "Failed tests:" >> $GITHUB_OUTPUT
+          echo "$FAILED_TESTS" >> $GITHUB_OUTPUT
+          echo EOF >> $GITHUB_OUTPUT
 
       - name: Publish test report to summary
         if: ${{ (failure() || success()) && contains(fromJson('["success", "failure"]'), steps.tests_step.conclusion) }}
