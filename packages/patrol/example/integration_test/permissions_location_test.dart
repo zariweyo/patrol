@@ -41,6 +41,7 @@ void main() {
         await $.native.selectCoarseLocation();
         await $.native.selectFineLocation();
         await $.native.grantPermissionWhenInUse();
+        expect(1, 0);
       }
       await $.pump();
 

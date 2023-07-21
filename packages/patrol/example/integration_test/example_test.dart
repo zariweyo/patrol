@@ -10,6 +10,7 @@ void main() {
 
       await $(FloatingActionButton).tap();
       expect($(#counterText).text, '1');
+      expect(1, 0);
 
       await $(#textField).enterText('Hello, Flutter!');
       expect($('Hello, Flutter!'), findsOneWidget);

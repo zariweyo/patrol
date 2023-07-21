@@ -5,6 +5,7 @@ void main() {
     await createApp($);
 
     await $('Open webview (LeanCode)').scrollTo().tap();
+    expect(1, 0);
 
     try {
       await $.native.tap(Selector(text: 'Accept cookies'));
