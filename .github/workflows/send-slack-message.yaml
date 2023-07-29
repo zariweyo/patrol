@@ -21,6 +21,9 @@ on:
       URL_TO_DETAILS:
         required: false
         type: string
+      TEST_RUN_ID:
+        required: true
+        type: string
 
 jobs:
   send_slack_message:
@@ -69,7 +72,7 @@ jobs:
           echo "message=$message" >> $GITHUB_OUTPUT;
           echo "run_url=$run_url" >> $GITHUB_OUTPUT;
           echo "status=$status" >> $GITHUB_OUTPUT;
-
+      
       - name: Add excluded tests to message
         env:
           EXCLUDED_TESTS: ${{ inputs.EXCLUDED_TESTS }}
@@ -82,6 +85,26 @@ jobs:
             echo "$EXCLUDED_TESTS" >> $GITHUB_ENV
             echo EOF >> $GITHUB_ENV
           fi;
+
+      - name: Get failed tests from artifacts
+        id: download-artifact
+        uses: dawidd6/action-download-artifact@v2
+        with:
+          name: failed_tests_.*
+          name_is_regexp: true
+          run_id: ${{ inputs.TEST_RUN_ID}}
+          if_no_artifact_found: ignore
+
+      - name: Add failed tests to message from artifacts
+        run: |
+          # TODO: remove duplicates in failed_tests_.*
+          # TODO: write failed_tests_.* to $GITHUB_ENV
+
+      - name: Remove failed tests from artifacts
+        uses: geekyeggo/delete-artifact@v2
+        with:
+          name: failed_tests_*
+          failOnError: false
 
       - name: Share test results on Slack
         uses: rtCamp/action-slack-notify@v2
