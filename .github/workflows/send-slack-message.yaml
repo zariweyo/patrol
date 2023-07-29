@@ -87,11 +87,11 @@ jobs:
           fi;
 
       - name: Get failed tests from artifacts
-        id: download-artifact
         uses: dawidd6/action-download-artifact@v2
         with:
           run_id: ${{ inputs.TEST_RUN_ID}}
           if_no_artifact_found: ignore
+          workflow_conclusion: ""
 
       - name: Add failed tests to message from artifacts
         run: |
