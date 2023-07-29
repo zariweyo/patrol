@@ -128,7 +128,7 @@ jobs:
         if: ${{ (failure() || success()) && contains(fromJson('["success", "failure"]'), steps.tests_step.conclusion) }}
         uses: actions/upload-artifact@v3
         with:
-          name: failed_tests_${{ join(matrix.*, '_') }}_${{ github.event_name }}
+          name: failed_tests_${{ matrix.device_model }}
           path: packages/patrol/example/failed_tests.txt
           retention-days: 1
 
@@ -173,5 +173,4 @@ jobs:
       ERROR_STATUS: ${{ needs.run_tests.outputs.ERROR_STATUS }}
       SLACK_MESSAGE_TITLE: ${{ needs.run_tests.outputs.SLACK_MESSAGE_TITLE }}
       EXCLUDED_TESTS: ${{ needs.run_tests.outputs.EXCLUDED_TESTS }}
-      TEST_RUN_ID: ${{ github.run_id }}
     secrets: inherit

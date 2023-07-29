@@ -21,9 +21,6 @@ on:
       URL_TO_DETAILS:
         required: false
         type: string
-      TEST_RUN_ID:
-        required: true
-        type: string
 
 jobs:
   send_slack_message:
