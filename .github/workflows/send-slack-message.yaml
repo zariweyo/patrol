@@ -90,8 +90,6 @@ jobs:
         id: download-artifact
         uses: dawidd6/action-download-artifact@v2
         with:
-          name: failed_tests_.*
-          name_is_regexp: true
           run_id: ${{ inputs.TEST_RUN_ID}}
           if_no_artifact_found: ignore
 
