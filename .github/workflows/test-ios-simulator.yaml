@@ -129,7 +129,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: failed_tests_${{ join(matrix.*, '_') }}_${{ github.event_name }}
-          path: failed_tests.txt
+          path: packages/patrol/example/failed_tests.txt
           retention-days: 1
 
       - name: Publish test report to summary
