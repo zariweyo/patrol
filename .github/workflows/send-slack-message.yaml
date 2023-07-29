@@ -89,6 +89,8 @@ jobs:
       - name: Get failed tests from artifacts
         uses: dawidd6/action-download-artifact@v2
         with:
+          name: failed_tests_.*
+          name_is_regexp: true
           run_id: ${{ github.event.workflow_call.id }}
           if_no_artifact_found: ignore
           workflow_conclusion: failure
@@ -100,6 +102,7 @@ jobs:
 
       - name: Remove failed tests from artifacts
         uses: geekyeggo/delete-artifact@v2
+        if: false
         with:
           name: failed_tests_*
           failOnError: false
