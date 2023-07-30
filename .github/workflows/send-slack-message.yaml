@@ -92,6 +92,7 @@ jobs:
           name: failed_tests_.*
           name_is_regexp: true
           if_no_artifact_found: ignore
+          workflow_conclusion: in_progress
 
       - name: Add failed tests to message from artifacts
         run: |
