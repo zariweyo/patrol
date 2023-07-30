@@ -91,10 +91,7 @@ jobs:
         with:
           name: failed_tests_.*
           name_is_regexp: true
-          # run_id: ${{ inputs.TEST_RUN_ID}}
           if_no_artifact_found: ignore
-          workflow_conclusion: failure
-          workflow: ${{ github.event.workflow_call.workflow_id }}
 
       - name: Add failed tests to message from artifacts
         run: |

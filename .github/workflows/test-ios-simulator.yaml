@@ -128,7 +128,7 @@ jobs:
         if: ${{ (failure() || success()) && contains(fromJson('["success", "failure"]'), steps.tests_step.conclusion) }}
         uses: actions/upload-artifact@v3
         with:
-          name: failed_tests_${{ matrix.device_model }}
+          name: failed_tests_${{ matrix.device_model }}_1
           path: packages/patrol/example/failed_tests.txt
           retention-days: 1
 
