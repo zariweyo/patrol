@@ -173,4 +173,5 @@ jobs:
       ERROR_STATUS: ${{ needs.run_tests.outputs.ERROR_STATUS }}
       SLACK_MESSAGE_TITLE: ${{ needs.run_tests.outputs.SLACK_MESSAGE_TITLE }}
       EXCLUDED_TESTS: ${{ needs.run_tests.outputs.EXCLUDED_TESTS }}
+      TEST_RUN_ID: ${{ github.run_id }}
     secrets: inherit

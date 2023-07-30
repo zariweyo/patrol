@@ -21,6 +21,9 @@ on:
       URL_TO_DETAILS:
         required: false
         type: string
+      TEST_RUN_ID:
+        required: true
+        type: string
 
 jobs:
   send_slack_message:
@@ -88,7 +91,7 @@ jobs:
         with:
           name: failed_tests_.*
           name_is_regexp: true
-          run_id: ${{ github.event.workflow_call.id }}
+          run_id: ${{ inputs.TEST_RUN_ID}}
           if_no_artifact_found: ignore
           workflow_conclusion: failure
 
@@ -96,6 +99,8 @@ jobs:
         run: |
           # TODO: remove duplicates in failed_tests_.*
           # TODO: write failed_tests_.* to $GITHUB_ENV
+          echo "${{ github.event.workflow_call.id }}"
+          echo "${{ inputs.TEST_RUN_ID}}"
 
       - name: Remove failed tests from artifacts
         uses: geekyeggo/delete-artifact@v2
